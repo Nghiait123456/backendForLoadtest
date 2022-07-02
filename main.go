@@ -1,6 +1,13 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+)
+
+type ipLogs struct {
+	IpSoucrce  string
+	IpForwards []string
+}
 
 func main() {
 	app := fiber.New()
@@ -11,6 +18,15 @@ func main() {
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("homepage")
+	})
+
+	app.Get("/ipSource", func(c *fiber.Ctx) error {
+		ip := ipLogs{
+			IpSoucrce:  c.IP(),
+			IpForwards: c.IPs(),
+		}
+
+		return c.JSON(ip)
 	})
 
 	app.Listen(":8000")
