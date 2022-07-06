@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
+	fiber "github.com/gofiber/fiber/v2"
 )
 
 type ipLogs struct {
@@ -29,5 +29,5 @@ func main() {
 		return c.JSON(ip)
 	})
 
-	app.Listen(":8080")
+	app.Listen(":8083")
 }
