@@ -5,8 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8083:8083"
+      - "80:80"
     entrypoint:
       [
       ]
     command: [ "/app/main" ]
+
+
+
